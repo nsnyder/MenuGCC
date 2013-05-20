@@ -1,33 +1,46 @@
 import 'dart:html';
 
-void main() {
-  // var elem = new Element.html('<h3>Test</h3>');
-  // elem.text="New Element w/ new text";
-  // query('body').children.add(elem);
+void main() {  
+  List<Menu> hicks = new List<Menu>();
+  List<Menu> map = new List<Menu>();
+  List<Menu> gedunk = new List<Menu>();
   
-  List<String> cafes = new List<String>();
-  cafes.add('Hicks');
-  Menu hicks_test = new Menu();
+  parseXmlMenu(hicks,"C:/Users/SNYDERNA1/Downloads/Hicks.xml");
+  
+  
+  /* Menu hicks_test = new Menu();
   hicks_test..setDate("Today")
             ..addMeal(0,'Breakfast')
             ..addMeal(1,'Lunch')
             ..addItems(0, ['Scrambled Eggs','Bacon','Sausage']);
+  */
   
-  
-  var menu1 = new DivElement();
-  menu1..id = cafes[0]
-       ..classes.add('cafeContainer');
-  query('body').children.add(menu1);
-  var heading1 = new HeadingElement.h2();
-  heading1..classes.add('cafe')
-          ..text = cafes[0];
-  menu1.children.add(heading1);
-
-  hicks_test.printMenu('<h3></h3>', '<li></li>', menu1);
+  var hicksCont = query('#hicksContainer');
+  var mapCont = query('#mapContainer');
+  var gedunkCont = query('#gedunkContainer');  
+  try {
+    hicks[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', hicksCont);
+  } catch (err) { // Fires if there is no menu
+    hicksCont.text="No Menu Data";
+  }
+  try {
+    map[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', mapCont);
+  } catch (err) { // Fires if there is no menu
+    mapCont.text="No Menu Data";
+  }
+  try {
+    gedunk[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', gedunkCont);
+  } catch (err) { // Fires if there is no menu
+    gedunkCont.text="No Menu Data";
+  }
 }
 
 bool connectionState() {
   // Returns true if connected
+}
+
+void parseXmlMenu(List<Menu> caf, String feed) {
+  
 }
 
 class Menu {
@@ -71,9 +84,11 @@ class Menu {
     return;
   }
   
-  void printMenu(titleElement, itemElement,
+  void printMenu(dateElement, titleElement, itemElement,
                  parent, [String titleClass="mealTitle",
                  String itemClass="mealItem"]) {
+    // todo: Print date
+    
     for(int i=0; i<4; i++) {
       if(meals[i]!=null) {
         var title = new Element.html(titleElement);

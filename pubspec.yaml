@@ -1,4 +1,5 @@
 name: menuGCC
-description: A sample web application
+author: Nathan Snyder
+description: A new web app to track the cafeteria menus at Grove City College
 dependencies:
   browser: any
