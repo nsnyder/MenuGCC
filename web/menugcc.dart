@@ -5,7 +5,7 @@ void main() {
   List<Menu> map = new List<Menu>();
   List<Menu> gedunk = new List<Menu>();
   
-  parseXmlMenu(hicks,"C:/Users/SNYDERNA1/Downloads/Hicks.xml");
+  parseXmlMenu(hicks,"Hicks.xml");
   
   
   /* Menu hicks_test = new Menu();
