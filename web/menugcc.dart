@@ -1,11 +1,11 @@
 import 'dart:html';
 
 void main() {  
-  List<Menu> hicks = new List<Menu>();
-  List<Menu> map = new List<Menu>();
-  List<Menu> gedunk = new List<Menu>();
+  MenuCollection hicks = new MenuCollection();
+  MenuCollection map = new MenuCollection();
+  MenuCollection gedunk = new MenuCollection();
   
-  parseXmlMenu(hicks,"Hicks.xml");
+  hicks.parseXmlMenu("Hicks.xml");
   
   
   /* Menu hicks_test = new Menu();
@@ -19,17 +19,17 @@ void main() {
   var mapCont = query('#mapContainer');
   var gedunkCont = query('#gedunkContainer');  
   try {
-    hicks[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', hicksCont);
+    hicks.print('<h2></h2>', '<h3></h3>', '<li></li>', hicksCont);
   } catch (err) { // Fires if there is no menu
     hicksCont.text="No Menu Data";
   }
   try {
-    map[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', mapCont);
+    map.print('<h2></h2>', '<h3></h3>', '<li></li>', mapCont);
   } catch (err) { // Fires if there is no menu
     mapCont.text="No Menu Data";
   }
   try {
-    gedunk[0].printMenu('<h2></h2>', '<h3></h3>', '<li></li>', gedunkCont);
+    gedunk.print('<h2></h2>', '<h3></h3>', '<li></li>', gedunkCont);
   } catch (err) { // Fires if there is no menu
     gedunkCont.text="No Menu Data";
   }
@@ -39,8 +39,24 @@ bool connectionState() {
   // Returns true if connected
 }
 
-void parseXmlMenu(List<Menu> caf, String feed) {
+class MenuCollection {
+  List<Menu> menus;
   
+  MenuCollection() {
+    menus = new List<Menu>();
+  }
+  void parseXmlMenu(String feed) {
+  
+  }
+  void print(dateElement, titleElement, itemElement,
+                 parent, [String titleClass="mealTitle",
+                 String itemClass="mealItem"]) {
+    if(menus.length>0) {
+      for(int i=0; i<menus.length; i++) {
+        menus[i].printMenu(dateElement, titleElement, itemElement, parent, titleClass, itemClass);
+      }
+    } else { throw 0; }
+  }
 }
 
 class Menu {
