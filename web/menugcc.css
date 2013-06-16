@@ -5,13 +5,24 @@ body,html {
   margin:0;
 }
 .cafeContainer {
-  border-right:1px solid grey; 
-  float:left;
+  /*float:left;*/
   height:100%;
-  padding:0 .75em;
-  width:31%;  
+  width:100%;  
+  min-width:24em;
 }
 .cafeContainer li {
   list-style:none;
   padding-left:5px;  
+}
+
+.cafe {
+  text-transform:Uppercase;
+  font-size:6em;
+  font-weight:100;
+  background-color:#990011;
+  padding:.1em;
+  color:#ffffff;
+  font-family:'Roboto',"HelveticaNeue-Light", "Helvetica Neue Light",
+             "Helvetica Neue",'Calibri Light',sans-serif-light, sans-serif;
+  
 }
